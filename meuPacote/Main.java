@@ -24,12 +24,14 @@ public class Main {
         while (true){
             System.out.println("\nQual Genero deseja pesquisar? " +
             "\n1 = Rock" +
-            "\n2 = Metal");
+            "\n2 = Metal" +
+            "\n3 = Sair");
             int resposta = scanner.nextInt();
             if (resposta == 1){
                 System.out.println("Bandas do gênero Rock:");
                 for (Banda banda : rock.getBandas()) {
-                    System.out.println(banda.getNome());
+                    System.out.print(banda.getNome());
+                    System.out.println(" " + banda.getDiaDoShow() + "/"+ banda.getMesDoShow());
                 } 
             }else if (resposta == 2) {
                 System.out.println("Bandas do gênero Metal:");
@@ -38,6 +40,9 @@ public class Main {
                     System.out.println(" " + banda.getDiaDoShow() + "/"+ banda.getMesDoShow());
 
                     }    
+                } 
+            else if (resposta == 3) {
+                    break;
                 }
             }
         }
