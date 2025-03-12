@@ -27,12 +27,14 @@ public class Main {
             "\n2 = Metal" +
             "\n3 = Sair");
             int resposta = scanner.nextInt();
+            // Mostrando bandas do genero rock
             if (resposta == 1){
                 System.out.println("Bandas do gênero Rock:");
                 for (Banda banda : rock.getBandas()) {
                     System.out.print(banda.getNome());
                     System.out.println(" " + banda.getDiaDoShow() + "/"+ banda.getMesDoShow());
                 } 
+            // Mostrando bandas do genero Metal
             }else if (resposta == 2) {
                 System.out.println("Bandas do gênero Metal:");
                 for (Banda banda : metal.getBandas()) {
@@ -41,6 +43,7 @@ public class Main {
 
                     }    
                 } 
+            // Opção para encerrar o loop
             else if (resposta == 3) {
                     break;
                 }
