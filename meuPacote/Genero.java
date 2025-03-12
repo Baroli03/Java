@@ -7,7 +7,7 @@ class Genero {
     private String nome;
     private List<Banda> bandas;
 
-    // Pegando o nome do Genero e criando uma Lista para salvar as bandas
+    // Pegando o nome do Gênero e criando uma Lista para salvar as bandas
     public Genero(String nome) {
         this.nome = nome;
         this.bandas = new ArrayList<>(); 
@@ -18,7 +18,7 @@ class Genero {
         bandas.add(banda); 
     }
 
-    // Um metodo que Pega o nome do genero
+    // Um metodo que Pega o nome do gênero
     public String getNome() {
         return nome;  
     }

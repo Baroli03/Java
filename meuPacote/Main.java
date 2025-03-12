@@ -9,7 +9,7 @@ public class Main {
         Genero rock = new Genero("Rock");
         Genero metal = new Genero("Metal");
 
-        // Criando bandas
+        // Criando bandas com Nome, dia do show e Mês do show
         Banda banda1 = new Banda("The Rockers", 15, 5, rock);
         Banda banda2 = new Banda("Metal Storm", 22, 5, metal);
         Banda banda3 = new Banda("Jazz Vibes", 15, 5, rock);
@@ -27,14 +27,14 @@ public class Main {
             "\n2 = Metal" +
             "\n3 = Sair");
             int resposta = scanner.nextInt();
-            // Mostrando bandas do genero rock
+            // Mostrando bandas do gênero rock
             if (resposta == 1){
                 System.out.println("Bandas do gênero Rock:");
                 for (Banda banda : rock.getBandas()) {
                     System.out.print(banda.getNome());
                     System.out.println(" " + banda.getDiaDoShow() + "/"+ banda.getMesDoShow());
                 } 
-            // Mostrando bandas do genero Metal
+            // Mostrando bandas do gênero Metal
             }else if (resposta == 2) {
                 System.out.println("Bandas do gênero Metal:");
                 for (Banda banda : metal.getBandas()) {

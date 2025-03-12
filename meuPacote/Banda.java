@@ -1,7 +1,7 @@
 package meuPacote;
 public class Banda {
 
-    // Declarando as variaveis da banda, Nome, Dia do show, Mes do show e o Genero
+    // Declarando as variaveis da banda, Nome, Dia do show, Mes do show e o Gênero
     private String nome;
     private int diaDoShow;
     private int mesDoShow;
