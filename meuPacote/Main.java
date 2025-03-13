@@ -37,15 +37,23 @@ public class Main {
         // Separa a data utilizando o "-" como delimitador
         String[] partesData = dataString.split("-");
 
-        // CRIAR MAIS FUNCIONALIDADES PARA O PROGRAMA
+        
+      
+
+        int diaAtual = Integer.parseInt(partesData[2]);
+        int mesAtual = Integer.parseInt(partesData[1]);
+        int anoAtual = Integer.parseInt(partesData[0]);
+
+        // #OBJETIVO CRIAR MAIS FUNCIONALIDADES PARA O PROGRAMA
+        
         // Exibindo bandas de um gênero específico (por exemplo, Rock)
         while (true){
 
             // USAR ISSO PARA CRIAR FUNCIONALIDADES EXEMPLO "todos os show do mês atual"
-            
-            System.out.println("Dia atual = " + partesData[2] );
-            System.out.println("Mês atual = " + partesData[1] );
-            System.out.println("Ano atual = " + partesData[0] );
+
+            System.out.println("Dia atual = " + diaAtual );
+            System.out.println("Mês atual = " + mesAtual );
+            System.out.println("Ano atual = " + anoAtual );
 
 
 
