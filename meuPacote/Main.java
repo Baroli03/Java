@@ -1,6 +1,9 @@
 package meuPacote;
 import java.util.Scanner;
 import java.time.LocalDate;
+
+
+
 public class Main {
 
     public static int getDiaAtual() {
@@ -86,6 +89,79 @@ public class Main {
         // Retorna uma mensagem indicando que a exibição foi concluída
         return "Exibição de shows concluída.";
     }
+
+
+    public static void pesquisaGenero(Genero alternative, Genero rock, Genero eletronic, Genero pop, Genero reggae, Genero punk) throws InterruptedException{
+        Scanner scanner = new Scanner(System.in);
+        while (true){
+            System.out.println(
+    "\nQual Genero deseja pesquisar? " +
+    "\n1 = Alternative" +
+    "\n2 = Rock" +
+    "\n3 = Eletronic" +
+    "\n4 = Pop" +
+    "\n5 = Reggae" +
+    "\n6 = Punk" +
+    "\n7 = Sair"
+    );
+        int resposta = scanner.nextInt();
+            
+        switch (resposta) {
+
+            case 1:
+                shows(alternative, "Alternative");
+                break;
+            case 2:
+                shows(rock, "Rock"); 
+                break;
+            case 3:
+                shows(eletronic, "Eletronic");
+                break;
+
+            case 4:
+                shows(pop, "Pop");
+                break;
+
+            case 5:
+                shows(reggae, "Reggae");
+                break;
+
+            case 6:
+                shows(punk, "Punk");
+            
+            case 7:
+                return;
+            
+            default:
+            System.out.println("Opção inválida.");
+        }
+
+    }
+}
+
+
+public static void imprime7Dias(Genero alternative,Genero rock,Genero eletronic,Genero pop,Genero reggae,Genero punk) throws InterruptedException{
+
+    String resultado = show7Dias(alternative, "Alternative");
+    System.out.println(resultado);
+
+    String resultado1 = show7Dias(rock, "Rock");
+    System.out.println(resultado1);
+
+    String resultado2 = show7Dias(eletronic, "Eletronic");
+    System.out.println(resultado2);
+
+    String resultado3 = show7Dias(pop, "Pop");
+    System.out.println(resultado3);
+
+    String resultado4 = show7Dias(reggae, "Reggae");
+    System.out.println(resultado4);
+
+    String resultado5 = show7Dias(punk, "Punk");
+    System.out.println(resultado5);
+
+    return;
+}
 
 
     public static void main(String[] args) throws InterruptedException {
@@ -211,71 +287,13 @@ public class Main {
 
             // Pesquisa por Gênero
             else if (menu == 2){
-                while (true){
-                    System.out.println(
-            "\nQual Genero deseja pesquisar? " +
-            "\n1 = Alternative" +
-            "\n2 = Rock" +
-            "\n3 = Eletronic" +
-            "\n4 = Pop" +
-            "\n5 = Reggae" +
-            "\n6 = Punk" +
-            "\n7 = Sair"
-            );
-            int resposta = scanner.nextInt();
+                pesquisaGenero(alternative, rock, eletronic, pop, reggae, punk);
             
-
-            // Mostrando bandas do gênero Alternative
-            if (resposta == 1) {
-                shows(alternative, "Alternative");
-                } 
-            // Mostrando bandas do gênero Rock
-            else if (resposta == 2) {
-                shows(rock, "Rock");   
-                } 
-            // Mostrando bandas do gênero Eletronic
-            else if (resposta == 3) {
-                shows(eletronic, "Eletronic");
-            }
-            // Mostrando bandas do gênero Pop
-            else if (resposta == 4) {
-                shows(pop, "Pop");
-            }
-            // Mostrando bandas do gênero Reggae
-            else if (resposta == 5) {
-                shows(reggae, "Reggae");
-            }
-            // Mostrando bandas do gênero Punk
-            else if (resposta == 6) {
-                shows(punk, "Punk");
-            }
-            // Opção para encerrar o loop
-            else if (resposta == 7) {
-                break;
-                }
-            }
         }
 
             // Bandas que irão tocar nos próximos 7 dias
             else if(menu == 3){
-                // Criando uma condição para que se continuar em 0 significa que não tem show
-                String resultado = show7Dias(alternative, "Alternative");
-                System.out.println(resultado);
-
-                String resultado1 = show7Dias(rock, "Rock");
-                System.out.println(resultado1);
-
-                String resultado2 = show7Dias(eletronic, "Eletronic");
-                System.out.println(resultado2);
-
-                String resultado3 = show7Dias(pop, "Pop");
-                System.out.println(resultado3);
-
-                String resultado4 = show7Dias(reggae, "Reggae");
-                System.out.println(resultado4);
-
-                String resultado5 = show7Dias(punk, "Punk");
-                System.out.println(resultado5);
+                imprime7Dias(alternative, rock, eletronic, pop, reggae, punk);
 
                 }
 
