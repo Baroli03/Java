@@ -110,6 +110,7 @@ public class Main {
 
             case 1:
                 shows(alternative, "Alternative");
+                
                 break;
             case 2:
                 shows(rock, "Rock"); 
