@@ -103,6 +103,7 @@ public class Main {
         int anoAtual = Integer.parseInt(partesData[0]);
 
         // Exibindo bandas de um gênero específico (por exemplo, Rock)
+        
         while (true) {
 
             System.out.println("Bem vindo ao");
@@ -121,14 +122,16 @@ public class Main {
                 "\n3 - Bandas que vão tocar nos próximos 7 dias" +
                 "\n4 - Bandas que vão tocar esse mês" +
                 "\n5 - Todas as bandas" +
-                "\n6 - Sair"
+                "\n6 - Sair" 
                 );
 
             int menu = scanner.nextInt();
 
-
+            if (menu == 1){
+                System.out.println("Somos um");
+            }
             
-            if (menu == 2){
+            else if (menu == 2){
                 while (true){
 
                 
