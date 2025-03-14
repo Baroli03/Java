@@ -3,6 +3,91 @@ import java.util.Scanner;
 import java.time.LocalDate;
 public class Main {
 
+    public static int getDiaAtual() {
+        // Pega a data atual
+        LocalDate dataAtual = LocalDate.now();
+
+        // Converte a data para string no formato padrão (AAAA-MM-DD)
+        String dataString = dataAtual.toString();  // Isso gera a data como "AAAA-MM-DD"
+
+        // Separa a data utilizando o "-" como delimitador
+        String[] partesData = dataString.split("-");
+
+        int diaAtual = Integer.parseInt(partesData[2]);
+
+
+        return diaAtual;
+
+    }
+
+    public static int getMesAtual() {
+        // Pega a data atual
+        LocalDate dataAtual = LocalDate.now();
+
+        // Converte a data para string no formato padrão (AAAA-MM-DD)
+        String dataString = dataAtual.toString();  // Isso gera a data como "AAAA-MM-DD"
+
+        // Separa a data utilizando o "-" como delimitador
+        String[] partesData = dataString.split("-");
+
+        int mesAtual = Integer.parseInt(partesData[1]);
+
+        return mesAtual;
+
+    }
+
+
+
+    public static String show7Dias(Genero genero, String nome) throws InterruptedException {
+    LocalDate diaAtual = LocalDate.now();
+    LocalDate diaLimite = diaAtual.plusDays(6); // Limite de 7 dias
+    int vaitershow = 0;
+
+    System.out.println("Essas são as bandas do Gênero (" + nome + ") que tocarão nos próximos dias:");
+
+    for (Banda banda : genero.getBandas()) {
+        LocalDate diaDoShow = LocalDate.of(diaAtual.getYear(), banda.getMesDoShow(), banda.getDiaDoShow());
+
+        // Verifica se o show está dentro dos próximos 7 dias
+        if (!diaDoShow.isBefore(diaAtual) && !diaDoShow.isAfter(diaLimite)) {
+            System.out.print(banda.getNome());
+            System.out.println(" " + banda.getDiaDoShow() + "/" + banda.getMesDoShow());
+            Thread.sleep(500);  // Pausa de 500ms
+            vaitershow++;
+        }
+    }
+
+    if (vaitershow == 0) {
+        Thread.sleep(500);
+        return "O gênero (" + nome + ") não terá show nos próximos 7 dias.\n";
+    }
+
+    return " ";
+}
+
+
+    public static String shows(Genero genero, String nome) throws InterruptedException {
+        // Imprime o título da seção, com o gênero e um espaço após a palavra "gênero"
+        System.out.println("Bandas do gênero " + nome + ":");
+        
+        // Aguarda 1 segundo antes de começar a mostrar as bandas
+        Thread.sleep(1000);
+    
+        // Exibe as bandas e as informações do show
+        for (Banda banda : genero.getBandas()) {
+            System.out.print(banda.getNome());  // Exibe o nome da banda
+            System.out.println(" " + banda.getDiaDoShow() + "/" + banda.getMesDoShow());  // Exibe o dia e mês do show
+            Thread.sleep(500);  // Pausa de 500ms entre as bandas
+        }
+    
+        // Aguarda mais 1 segundo antes de finalizar
+        Thread.sleep(1000);
+    
+        // Retorna uma mensagem indicando que a exibição foi concluída
+        return "Exibição de shows concluída.";
+    }
+
+
     public static void main(String[] args) throws InterruptedException {
         Scanner scanner = new Scanner(System.in);
         // Criando gêneros
@@ -88,17 +173,7 @@ public class Main {
         punk.adicionarBanda(banda29);
         punk.adicionarBanda(banda30);
 
-        // Pega a data atual
-        LocalDate dataAtual = LocalDate.now();
-
-        // Converte a data para string no formato padrão (AAAA-MM-DD)
-        String dataString = dataAtual.toString();  // Isso gera a data como "AAAA-MM-DD"
-
-        // Separa a data utilizando o "-" como delimitador
-        String[] partesData = dataString.split("-");
-
-        int diaAtual = Integer.parseInt(partesData[2]);
-        int mesAtual = Integer.parseInt(partesData[1]);
+        
 
         // Exibindo bandas de um gênero específico (por exemplo, Rock)
         
@@ -113,6 +188,8 @@ public class Main {
                 "\nSSSS     OOO   UUU   N   N  DDDD     III  N   N      CCCC   III    T       Y"
                 );
             Thread.sleep(500);
+
+            // Criando o menu
             System.out.println(
                 "Menu:" +
                 "\n1 - Sobre nós" +
@@ -122,19 +199,20 @@ public class Main {
                 "\n5 - Todas as bandas" +
                 "\n6 - Sair" 
                 );
-
             int menu = scanner.nextInt();
             Thread.sleep(2000);
 
+
+            // Sobre nós
             if (menu == 1){
                 System.out.println("Somos um");
             }
             
+
+            // Pesquisa por Gênero
             else if (menu == 2){
                 while (true){
-
-                
-                System.out.println(
+                    System.out.println(
             "\nQual Genero deseja pesquisar? " +
             "\n1 = Alternative" +
             "\n2 = Rock" +
@@ -145,183 +223,61 @@ public class Main {
             "\n7 = Sair"
             );
             int resposta = scanner.nextInt();
+            
 
             // Mostrando bandas do gênero Alternative
             if (resposta == 1) {
-                System.out.println("Bandas do gênero Alternative:");
-                Thread.sleep(1000);
-                for (Banda banda : alternative.getBandas()) {
-                    System.out.print(banda.getNome());
-                    System.out.println(" " + banda.getDiaDoShow() + "/"+ banda.getMesDoShow());
-                    Thread.sleep(500);
-                    }
-                Thread.sleep(1000);
+                shows(alternative, "Alternative");
                 } 
             // Mostrando bandas do gênero Rock
             else if (resposta == 2) {
-                System.out.println("Bandas do gênero Rock:");
-                Thread.sleep(1000);
-                for (Banda banda : rock.getBandas()) {
-                    System.out.print(banda.getNome());
-                    System.out.println(" " + banda.getDiaDoShow() + "/"+ banda.getMesDoShow());
-                    Thread.sleep(500);
-                    } 
-                Thread.sleep(1000);   
+                shows(rock, "Rock");   
                 } 
             // Mostrando bandas do gênero Eletronic
             else if (resposta == 3) {
-                System.out.println("Bandas do gênero Eletronic:");
-                Thread.sleep(1000);
-                for (Banda banda : eletronic.getBandas()) {
-                    System.out.print(banda.getNome());
-                    System.out.println(" " + banda.getDiaDoShow() + "/"+ banda.getMesDoShow());
-                    Thread.sleep(500);
-                    }
-                Thread.sleep(1000);
-                } 
+                shows(eletronic, "Eletronic");
+            }
             // Mostrando bandas do gênero Pop
             else if (resposta == 4) {
-                System.out.println("Bandas do gênero Pop:");
-                Thread.sleep(1000);
-                for (Banda banda : pop.getBandas()) {
-                    System.out.print(banda.getNome());
-                    System.out.println(" " + banda.getDiaDoShow() + "/"+ banda.getMesDoShow());
-                    Thread.sleep(500);
-                    }
-                Thread.sleep(1000);
-                } 
+                shows(pop, "Pop");
+            }
             // Mostrando bandas do gênero Reggae
             else if (resposta == 5) {
-                System.out.println("Bandas do gênero Reggae:");
-                Thread.sleep(1000);
-                for (Banda banda : reggae.getBandas()) {
-                    System.out.print(banda.getNome());
-                    System.out.println(" " + banda.getDiaDoShow() + "/"+ banda.getMesDoShow());
-                    Thread.sleep(500);
-                    }
-                Thread.sleep(1000);
-                }
+                shows(reggae, "Reggae");
+            }
             // Mostrando bandas do gênero Punk
             else if (resposta == 6) {
-                System.out.println("Bandas do gênero Punk:");
-                Thread.sleep(1000);
-                for (Banda banda : punk.getBandas()) {
-                    System.out.print(banda.getNome());
-                    System.out.println(" " + banda.getDiaDoShow() + "/"+ banda.getMesDoShow());
-                    Thread.sleep(500);
-                    }
-                Thread.sleep(1000);
-                }
+                shows(punk, "Punk");
+            }
             // Opção para encerrar o loop
             else if (resposta == 7) {
                 break;
                 }
-            } 
             }
+        }
+
+            // Bandas que irão tocar nos próximos 7 dias
             else if(menu == 3){
-                int vaitershow = 0;
-                System.out.println("Todas as bandas que vão tocar nos próximos 7 dias:");
-                Thread.sleep(500);
+                // Criando uma condição para que se continuar em 0 significa que não tem show
+                String resultado = show7Dias(alternative, "Alternative");
+                System.out.println(resultado);
 
-                System.out.println("Bandas do gênero Alternative:");
-                Thread.sleep(1000);
-                for (Banda banda : alternative.getBandas()) {
-                    
-                    if (mesAtual == banda.getMesDoShow() && ((diaAtual == banda.getDiaDoShow()) || ((diaAtual + 1) == (banda.getDiaDoShow())) || ((diaAtual + 2) == (banda.getDiaDoShow() + 2)) || ((diaAtual + 3) == banda.getDiaDoShow()) || ((diaAtual + 4) == banda.getDiaDoShow()) || ((diaAtual + 5) == banda.getDiaDoShow()) || ((diaAtual + 6) == banda.getDiaDoShow()) )) {
-                        System.out.print(banda.getNome());
-                        System.out.println(" " + banda.getDiaDoShow() + "/"+ banda.getMesDoShow());
-                        Thread.sleep(500);
-                        vaitershow ++;
-                    }
-                    
-                }
-                if (vaitershow == 0) {
-                    System.out.println("Não terá show desse Gênero nos próximos 7 dias");
-                    Thread.sleep(500);
-                }
-                vaitershow = 0;
-                System.out.println("Bandas do gênero Rock:");
-                Thread.sleep(1000);
-                for (Banda banda : rock.getBandas()) {
-                    
-                    if (mesAtual == banda.getMesDoShow() && ((diaAtual == banda.getDiaDoShow()) || ((diaAtual + 1) == (banda.getDiaDoShow())) || ((diaAtual + 2) == (banda.getDiaDoShow() + 2)) || ((diaAtual + 3) == banda.getDiaDoShow()) || ((diaAtual + 4) == banda.getDiaDoShow()) || ((diaAtual + 5) == banda.getDiaDoShow()) || ((diaAtual + 6) == banda.getDiaDoShow()) )) {
-                        System.out.print(banda.getNome());
-                        System.out.println(" " + banda.getDiaDoShow() + "/"+ banda.getMesDoShow());
-                        Thread.sleep(500);
-                        vaitershow ++;
-                    }
-                    
-                }
-                if (vaitershow == 0) {
-                    System.out.println("Não terá show desse Gênero nos próximos 7 dias");
-                    Thread.sleep(500);
-                }
-                vaitershow = 0;
-                System.out.println("Bandas do gênero Eletronic:");
-                Thread.sleep(1000);
-                for (Banda banda : eletronic.getBandas()) {
-                    
-                    if (mesAtual == banda.getMesDoShow() && ((diaAtual == banda.getDiaDoShow()) || ((diaAtual + 1) == (banda.getDiaDoShow())) || ((diaAtual + 2) == (banda.getDiaDoShow() + 2)) || ((diaAtual + 3) == banda.getDiaDoShow()) || ((diaAtual + 4) == banda.getDiaDoShow()) || ((diaAtual + 5) == banda.getDiaDoShow()) || ((diaAtual + 6) == banda.getDiaDoShow()) )) {
-                        System.out.print(banda.getNome());
-                        System.out.println(" " + banda.getDiaDoShow() + "/"+ banda.getMesDoShow());
-                        Thread.sleep(500);
-                        vaitershow ++;
-                    } 
-                }
-                if (vaitershow == 0) {
-                    System.out.println("Não terá show desse Gênero nos próximos 7 dias");
-                    Thread.sleep(500);
-                }
-                vaitershow = 0;
-                System.out.println("Bandas do gênero Pop:");
-                Thread.sleep(1000);
-                for (Banda banda : pop.getBandas()) {
-        
-                    if (mesAtual == banda.getMesDoShow() && ((diaAtual == banda.getDiaDoShow()) || ((diaAtual + 1) == (banda.getDiaDoShow())) || ((diaAtual + 2) == (banda.getDiaDoShow() + 2)) || ((diaAtual + 3) == banda.getDiaDoShow()) || ((diaAtual + 4) == banda.getDiaDoShow()) || ((diaAtual + 5) == banda.getDiaDoShow()) || ((diaAtual + 6) == banda.getDiaDoShow()) )) {
-                        System.out.print(banda.getNome());
-                        System.out.println(" " + banda.getDiaDoShow() + "/"+ banda.getMesDoShow());
-                        Thread.sleep(500);
-                        vaitershow ++;
-                    } 
-                }
-                if (vaitershow == 0) {
-                    System.out.println("Não terá show desse Gênero nos próximos 7 dias");
-                    Thread.sleep(500);
-                }
-                vaitershow = 0;
-                System.out.println("Bandas do gênero Reggae:");
-                Thread.sleep(1000);
-                for (Banda banda : reggae.getBandas()) {
-                    
-                    if (mesAtual == banda.getMesDoShow() && ((diaAtual == banda.getDiaDoShow()) || ((diaAtual + 1) == (banda.getDiaDoShow())) || ((diaAtual + 2) == (banda.getDiaDoShow() + 2)) || ((diaAtual + 3) == banda.getDiaDoShow()) || ((diaAtual + 4) == banda.getDiaDoShow()) || ((diaAtual + 5) == banda.getDiaDoShow()) || ((diaAtual + 6) == banda.getDiaDoShow()) )) {
-                        System.out.print(banda.getNome());
-                        System.out.println(" " + banda.getDiaDoShow() + "/"+ banda.getMesDoShow());
-                        Thread.sleep(500);
-                        vaitershow ++;
-                    }     
-                }
-                if (vaitershow == 0) {
-                    System.out.println("Não terá show desse Gênero nos próximos 7 dias");
-                }
-                vaitershow = 0;
-                System.out.println("Bandas do gênero Punk:");
-                Thread.sleep(1000);
-                for (Banda banda : punk.getBandas()) {
-                    
-                    if (mesAtual == banda.getMesDoShow() && ((diaAtual == banda.getDiaDoShow()) || ((diaAtual + 1) == (banda.getDiaDoShow())) || ((diaAtual + 2) == (banda.getDiaDoShow() + 2)) || ((diaAtual + 3) == banda.getDiaDoShow()) || ((diaAtual + 4) == banda.getDiaDoShow()) || ((diaAtual + 5) == banda.getDiaDoShow()) || ((diaAtual + 6) == banda.getDiaDoShow()) )) {
-                        System.out.print(banda.getNome());
-                        System.out.println(" " + banda.getDiaDoShow() + "/"+ banda.getMesDoShow());
-                        Thread.sleep(500);
-                        vaitershow ++;
-                    } 
-                }
-                if (vaitershow == 0) {
-                    System.out.println("Não terá show desse Gênero nos próximos 7 dias");
-                }
-                Thread.sleep(1000);
-                } 
+                String resultado1 = show7Dias(rock, "Rock");
+                System.out.println(resultado1);
 
+                String resultado2 = show7Dias(eletronic, "Eletronic");
+                System.out.println(resultado2);
 
+                String resultado3 = show7Dias(pop, "Pop");
+                System.out.println(resultado3);
+
+                String resultado4 = show7Dias(reggae, "Reggae");
+                System.out.println(resultado4);
+
+                String resultado5 = show7Dias(punk, "Punk");
+                System.out.println(resultado5);
+
+                }
 
             else {
                 scanner.close();
@@ -329,8 +285,9 @@ public class Main {
                 Thread.sleep(1000);
                 break;
             }
-
         }
-        
     }
 }
+
+
+
