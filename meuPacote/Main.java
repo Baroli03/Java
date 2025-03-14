@@ -323,7 +323,7 @@ public class Main {
 
 
 
-            else if(menu == 6){
+            else {
                 scanner.close();
                 System.out.println("Agradecemos a sua Participação :)");
                 Thread.sleep(1000);
