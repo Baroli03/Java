@@ -200,41 +200,47 @@ public static void exibirTodas(Genero... generos) throws InterruptedException {
         Genero punk = new Genero("Punk");
 
         // Criando bandas com Nome, dia do show e Mês do show
-        Banda banda1 = new Banda("Elder effe", 20, 3, alternative);
-        Banda banda2 = new Banda("Hertz",  22, 3, alternative);
-        Banda banda3 = new Banda("Garbage", 23, 3, alternative);
-        Banda banda4 = new Banda("Menores Atos", 5, 4, alternative);
-        Banda banda5 = new Banda("Gustavo Kaly", 12, 4, alternative); // Bandas alternativas
+        // Bandas alternativas
+        Banda banda1 = new Banda("Garbage", 23, 3, alternative);
+        Banda banda2 = new Banda("Pitty", 20, 4, alternative);
+        Banda banda3 = new Banda("Ney Matogrosso", 15, 3, alternative);
+        Banda banda4 = new Banda("Bush", 1, 4, alternative);
+        Banda banda5 = new Banda("Hermanos Gutiérrez", 11, 3, alternative);
 
-        Banda banda6 = new Banda("Nirvana", 30, 3, rock); // Bandas de rock
-        Banda banda7 = new Banda("Foo Fighters", 5, 4, rock);
-        Banda banda8 = new Banda("AC/DC", 15, 4, rock);
-        Banda banda9 = new Banda("Iron Maiden", 23, 5, rock);
-        Banda banda10 = new Banda("Metallica", 25, 5, rock);
+        // Bandas de rock
+        Banda banda6 = new Banda("The Offspring", 10, 3, rock);
+        Banda banda7 = new Banda("Alanis Morissette", 30, 5, rock);
+        Banda banda8 = new Banda("Ben Harper & The Innocent Criminals", 12, 4, rock);
+        Banda banda9 = new Banda("Incubus", 8, 4, rock);
+        Banda banda10 = new Banda("Bush", 1, 4, rock);
 
-        Banda banda11 = new Banda("Daft Punk", 12, 3, eletronic); // Bandas eletrônicas
-        Banda banda12 = new Banda("Calvin Harris", 19, 4, eletronic);
-        Banda banda13 = new Banda("Avicii", 22, 5, eletronic);
-        Banda banda14 = new Banda("Skrillex", 30, 3, eletronic);
-        Banda banda15 = new Banda("Zedd", 7, 4, eletronic);
+        // Bandas eletrônicas
+        Banda banda11 = new Banda("Devochka", 8, 3, eletronic);
+        Banda banda12 = new Banda("Momentum DJs", 7, 4, eletronic);
+        Banda banda13 = new Banda("Overdrive", 9, 3, eletronic);
+        Banda banda14 = new Banda("Club Vibe DJs", 6, 4, eletronic);
+        Banda banda15 = new Banda("DM7 Artists", 10, 5, eletronic);
 
-        Banda banda16 = new Banda("Taylor Swift", 16, 3, pop); // Bandas pop
-        Banda banda17 = new Banda("Ariana Grande", 8, 4, pop);
-        Banda banda18 = new Banda("Billie Eilish", 20, 4, pop);
-        Banda banda19 = new Banda("Shawn Mendes", 25, 3, pop);
-        Banda banda20 = new Banda("Ed Sheeran", 1, 4, pop);
+        // Bandas pop
+        Banda banda16 = new Banda("Olivia Rodrigo", 26, 3, pop);
+        Banda banda17 = new Banda("Jorge Vercillo", 11, 4, pop);
+        Banda banda18 = new Banda("Paula Toller", 26, 4, pop);
+        Banda banda19 = new Banda("Camila Fremder", 26, 3, pop);
+        Banda banda20 = new Banda("Thiaguinho", 26, 4, pop);
 
-        Banda banda21 = new Banda("Bob Marley", 3, 5, reggae); // Bandas reggae
-        Banda banda22 = new Banda("Damian Marley", 15, 3, reggae);
-        Banda banda23 = new Banda("Ziggy Marley", 10, 4, reggae);
-        Banda banda24 = new Banda("Toots and the Maytals", 18, 3, reggae);
-        Banda banda25 = new Banda("Steel Pulse", 5, 5, reggae);
+        // Bandas reggae
+        Banda banda21 = new Banda("Natiruts", 26, 5, reggae);
+        Banda banda22 = new Banda("Armandinho", 15, 3, reggae);
+        Banda banda23 = new Banda("Chimarruts", 18, 4, reggae);
+        Banda banda24 = new Banda("Inner Circle", 9, 5, reggae);
+        Banda banda25 = new Banda("Tribo de Jah", 12, 4, reggae);
 
-        Banda banda26 = new Banda("The Clash", 7, 3, punk); // Bandas punk
-        Banda banda27 = new Banda("Ramones", 14, 3, punk);
-        Banda banda28 = new Banda("Green Day", 21, 4, punk);
-        Banda banda29 = new Banda("Sex Pistols", 1, 5, punk);
-        Banda banda30 = new Banda("The Offspring", 10, 3, punk);
+        // Bandas punk
+        Banda banda26 = new Banda("The Offspring", 10, 3, punk);
+        Banda banda27 = new Banda("Rise Against", 14, 4, punk);
+        Banda banda28 = new Banda("The Damned", 13, 3, punk);
+        Banda banda29 = new Banda("Amyl and The Sniffers", 12, 4, punk);
+        Banda banda30 = new Banda("Sublime", 15, 5, punk);
 
         // Adicionando bandas aos gêneros
         alternative.adicionarBanda(banda1);
