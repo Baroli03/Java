@@ -307,7 +307,13 @@ public static void exibirTodas(Genero... generos) throws InterruptedException {
             switch (menu) {
                 // Sobre nós
                 case 1:
-                    System.out.println("Somos um");
+                    System.out.println("Somos uma turma da Faculdade Positivo, cursando Análise e Desenvolvimento de Sistemas, atualmente no segundo semestre. Este projeto é parte da disciplina de Desenvolvimento de Software,\n onde aplicamos conceitos de programação orientada a objetos, desenvolvimento ágil e gestão de sistemas.\r\n" + //
+                                                "\r\n" + //
+                                                "Nosso objetivo com este projeto é criar uma aplicação que auxilie na consulta de shows de diferentes gêneros musicais, apresentando informações sobre as bandas e seus respectivos eventos,\n proporcionando uma experiência interativa e dinâmica para o usuário.\r\n" + //
+                                                "\r\n" + //
+                                                "Ao longo do desenvolvimento, tivemos a oportunidade de trabalhar em equipe, aprender sobre as melhores práticas de codificação e também de enfrentar desafios técnicos,\n como integração de dados e estruturação de informações. Cada membro da equipe contribuiu com suas habilidades e aprendizado para o sucesso do projeto, que reflete nosso crescimento acadêmico e profissional.\r\n" + //
+                                                "\r\n" + //
+                                                "Agradecemos pela sua visita e esperamos que aproveite nossa aplicação!");
                     break;
 
                 // Pesquisa de músicas com gêneros
