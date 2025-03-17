@@ -273,10 +273,37 @@ public static void exibirTodas(Genero... generos) throws InterruptedException {
         punk.adicionarBanda(banda29);
         punk.adicionarBanda(banda30);
 
-        
 
-        // Exibindo bandas de um gênero específico (por exemplo, Rock)
-        
+
+        System.out.println("Deseja entrar em um Usuário? [1 Para Sim], [2 Para não]");
+            int user = scanner.nextInt();
+
+            if (user == 1) {
+                scanner.nextLine();
+                // Cadastro de usuário
+                System.out.println("Bem vindo a area de cadastro...");
+
+                System.out.println("Digite seu nome: ");
+                String nome = scanner.nextLine(); // Lê a linha inteira ("nome do usuário")
+            
+                System.out.println("Digite seu e-mail: ");
+                String email = scanner.nextLine();  // Lê a linha inteira (e-mail do usuário)
+            
+                System.out.println("Digite sua senha: ");
+                String senha = scanner.nextLine();  // Lê a linha inteira (senha do usuário)
+
+
+                // Criando o objeto Usuario
+                Usuario usuario = new Usuario(nome , email, senha);
+            
+                // Exibindo os dados do usuário
+                System.out.println("\nUsuário cadastrado com sucesso!");
+                usuario.imprimirUsuario(); // Imprime os dados do usuário
+            } else {
+                scanner.nextLine();  // Consumir a linha pendente
+            }
+            
+
         while (true) {
             System.out.println("Bem vindo ao");
             Thread.sleep(1000);
