@@ -41,30 +41,55 @@ public class Main {
 
 
 
-    public static String show7Dias(Genero genero, String nome) throws InterruptedException {
-    LocalDate diaAtual = LocalDate.now();
-    LocalDate diaLimite = diaAtual.plusDays(6); // Limite de 7 dias
+    public static String showXDias(Genero genero, String nome, int limite) throws InterruptedException {
+        LocalDate diaAtual = LocalDate.now();
+        LocalDate diaLimite = diaAtual.plusDays(limite - 1); // Ajuste para o limite correto (inclusive)
+        int vaitershow = 0;
+    
+        System.out.println("Essas são as bandas do Gênero (" + nome + ") que tocarão nos próximos " + limite + " dias:");
+    
+        for (Banda banda : genero.getBandas()) {
+            LocalDate diaDoShow = LocalDate.of(diaAtual.getYear(), banda.getMesDoShow(), banda.getDiaDoShow());
+    
+            // Verifica se o show está dentro do intervalo de dias desejado
+            if (!diaDoShow.isBefore(diaAtual) && !diaDoShow.isAfter(diaLimite)) {
+                System.out.print(banda.getNome());
+                System.out.println(" " + banda.getDiaDoShow() + "/" + banda.getMesDoShow());
+                Thread.sleep(500);  // Pausa de 500ms
+                vaitershow++;
+            }
+        }
+
+        if (vaitershow == 0) {
+            Thread.sleep(500);
+            System.out.println("O gênero (" + nome + ") não terá show nos próximos " + limite + " dias.\n");
+            return " ";
+        }
+        System.out.print("\n");
+        return " ";
+    }
+    
+
+
+
+public static String showTodas(Genero genero, String nome) throws InterruptedException {
     int vaitershow = 0;
 
-    System.out.println("Essas são as bandas do Gênero (" + nome + ") que tocarão nos próximos dias:");
+    System.out.println("Essas são as bandas do Gênero (" + nome + ") registradas");
 
     for (Banda banda : genero.getBandas()) {
-        LocalDate diaDoShow = LocalDate.of(diaAtual.getYear(), banda.getMesDoShow(), banda.getDiaDoShow());
-
-        // Verifica se o show está dentro dos próximos 7 dias
-        if (!diaDoShow.isBefore(diaAtual) && !diaDoShow.isAfter(diaLimite)) {
-            System.out.print(banda.getNome());
-            System.out.println(" " + banda.getDiaDoShow() + "/" + banda.getMesDoShow());
-            Thread.sleep(500);  // Pausa de 500ms
-            vaitershow++;
-        }
+        System.out.print(banda.getNome());
+        System.out.println(" " + banda.getDiaDoShow() + "/" + banda.getMesDoShow());
+        Thread.sleep(500);  // Pausa de 500ms
+        vaitershow ++;
     }
 
     if (vaitershow == 0) {
-        Thread.sleep(500);
-        return "O gênero (" + nome + ") não terá show nos próximos 7 dias.\n";
+        System.out.println("O gênero (" + nome + ") não tem shows registrados.\n");
+        return " ";
     }
-
+    
+    System.out.print("\n");
     return " ";
 }
 
@@ -129,8 +154,10 @@ public class Main {
 
             case 6:
                 shows(punk, "Punk");
-            
+                break;
+
             case 7:
+                scanner.close();
                 return;
             
             default:
@@ -141,27 +168,23 @@ public class Main {
 }
 
 
-public static void imprime7Dias(Genero alternative,Genero rock,Genero eletronic,Genero pop,Genero reggae,Genero punk) throws InterruptedException{
+public static void exibirShowsNosProximos7Dias(Genero... generos) throws InterruptedException {
+    for (Genero genero : generos) {
+        showXDias(genero, genero.getNome(), 7);
+    }
+}
 
-    String resultado = show7Dias(alternative, "Alternative");
-    System.out.println(resultado);
 
-    String resultado1 = show7Dias(rock, "Rock");
-    System.out.println(resultado1);
+public static void exibirShowsNoMes(Genero... generos) throws InterruptedException {
+    for (Genero genero : generos) {
+        showXDias(genero, genero.getNome(), 30);
+    }
+}
 
-    String resultado2 = show7Dias(eletronic, "Eletronic");
-    System.out.println(resultado2);
-
-    String resultado3 = show7Dias(pop, "Pop");
-    System.out.println(resultado3);
-
-    String resultado4 = show7Dias(reggae, "Reggae");
-    System.out.println(resultado4);
-
-    String resultado5 = show7Dias(punk, "Punk");
-    System.out.println(resultado5);
-
-    return;
+public static void exibirTodas(Genero... generos) throws InterruptedException {
+    for (Genero genero : generos) {
+        showTodas(genero, genero.getNome());
+    }
 }
 
 
@@ -272,7 +295,7 @@ public static void imprime7Dias(Genero alternative,Genero rock,Genero eletronic,
                 "\n1 - Sobre nós" +
                 "\n2 - Pesquisa por Genêros de banda" +
                 "\n3 - Bandas que vão tocar nos próximos 7 dias" +
-                "\n4 - Bandas que vão tocar esse mês" +
+                "\n4 - Bandas que vão tocar nos próximos 30 dias" +
                 "\n5 - Todas as bandas" +
                 "\n6 - Sair" 
                 );
@@ -280,30 +303,49 @@ public static void imprime7Dias(Genero alternative,Genero rock,Genero eletronic,
             Thread.sleep(2000);
 
 
-            // Sobre nós
-            if (menu == 1){
-                System.out.println("Somos um");
-            }
             
+            switch (menu) {
+                // Sobre nós
+                case 1:
+                    System.out.println("Somos um");
+                    break;
 
-            // Pesquisa por Gênero
-            else if (menu == 2){
-                pesquisaGenero(alternative, rock, eletronic, pop, reggae, punk);
-            
+                // Pesquisa de músicas com gêneros
+                case 2:
+                    pesquisaGenero(alternative, rock, eletronic, pop, reggae, punk);
+                    break;
+
+                // Imprimir os shows que terão nos próximos 7 dias
+                case 3:
+                    exibirShowsNosProximos7Dias(alternative, rock, eletronic, pop, reggae, punk);
+                    break;
+
+                // Imprimir todas as bandas que irão tocar esse mês
+                case 4:
+                    exibirShowsNoMes(alternative, rock, eletronic, pop, reggae, punk);
+                    break;
+
+                // Imprimir todos os shows registrados
+                case 5:
+                    exibirTodas(alternative, rock, eletronic, pop, reggae, punk);
+                    break;
+                
+                // Fechar o aplicativo
+                case 6:
+                    break;
+
+                // Em caso de comando invalido
+                default:
+                    System.out.println("Comando Inválido");
+                    break;
+            }
+
+        // Finalizando o programa
+        if (menu == 6){
+            scanner.close();
+            System.out.println("Finalizando programa...");
+            break;
         }
-
-            // Bandas que irão tocar nos próximos 7 dias
-            else if(menu == 3){
-                imprime7Dias(alternative, rock, eletronic, pop, reggae, punk);
-
-                }
-
-            else {
-                scanner.close();
-                System.out.println("Agradecemos a sua Participação :)");
-                Thread.sleep(1000);
-                break;
-            }
         }
     }
 }
