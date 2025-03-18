@@ -115,13 +115,9 @@ public class Main {
                 System.out.println("Digite sua senha: ");
                 String senha = scanner.nextLine();  // Lê a linha inteira (senha do usuário)
 
+                GravadorJson gravador = new GravadorJson();
+                gravador.getUsuario(nome, email, senha);
 
-                // Criando o objeto Usuario
-                Usuario usuario = new Usuario(nome , email, senha);
-            
-                // Exibindo os dados do usuário
-                System.out.println("\nUsuário cadastrado com sucesso!");
-                usuario.imprimirUsuario(); // Imprime os dados do usuário
             } else {
                 scanner.nextLine();  // Consumir a linha pendente
             }
