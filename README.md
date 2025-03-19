@@ -49,7 +49,7 @@ Um programa de console desenvolvido em **Java** que exibe as bandas que irão to
 - Ter o **Java** e **Gradle** instalados
 - Clonar este repositório:
   ```sh
-  git clone https://github.com/Baroli03/Java
+  git clone https://github.com/Baroli03/Java.git
   ```
 
 ### 2️⃣ Compilar e Executar
