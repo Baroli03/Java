@@ -9,11 +9,6 @@ import java.util.List;
 
 public class GravadorJson {
 
-    public static void main(String[] args) {
-        GravadorJson gravador = new GravadorJson();
-        gravador.getUsuario("Maria", "maria@email.com", "senha123");
-    }
-
     public void getUsuario(String nome, String email, String senha) {
 
         Usuario usuario = new Usuario(nome, email, senha);

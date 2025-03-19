@@ -1,14 +1,16 @@
+
 package meuPacote;
+
 import java.util.Scanner;
-
-
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
 
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
-        
-        // Criando gêneros
 
+        // Criando gêneros
         Genero alternative = new Genero("Alternative");
         Genero rock = new Genero("Rock");
         Genero eletronic = new Genero("Eletronic");
@@ -95,45 +97,54 @@ public class Main {
         punk.adicionarBanda(banda28);
         punk.adicionarBanda(banda29);
         punk.adicionarBanda(banda30);
-        
-        Scanner scanner = new Scanner(System.in);
 
+        Metodos lernum = new Metodos();
 
-        System.out.println("Deseja entrar em um Usuário? [1 Para Sim], [2 Para não]");
-            int user = scanner.nextInt();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); // Declaração aqui
+
+        try {
+            // Solicita ao usuário se deseja entrar
+            System.out.println("Deseja entrar em um Usuário? [1 Para Sim], [2 Para Não]");
+            int user = lernum.lerNumeroValido(reader);
 
             if (user == 1) {
-                scanner.nextLine();
                 // Cadastro de usuário
-                System.out.println("Bem vindo a area de cadastro...");
+                System.out.println("Bem-vindo à área de cadastro...");
 
+                // Solicita o nome
                 System.out.println("Digite seu nome: ");
-                String nome = scanner.nextLine(); // Lê a linha inteira ("nome do usuário")
+                String nome = reader.readLine();  // Lê a linha inteira (nome do usuário)
             
+                // Solicita o e-mail
                 System.out.println("Digite seu e-mail: ");
-                String email = scanner.nextLine();  // Lê a linha inteira (e-mail do usuário)
+                String email = reader.readLine();  // Lê a linha inteira (e-mail do usuário)
             
+                // Solicita a senha
                 System.out.println("Digite sua senha: ");
-                String senha = scanner.nextLine();  // Lê a linha inteira (senha do usuário)
+                String senha = reader.readLine();  // Lê a linha inteira (senha do usuário)
 
+                // Chama a classe GravadorJson (supondo que ela esteja implementada)
                 GravadorJson gravador = new GravadorJson();
                 gravador.getUsuario(nome, email, senha);
-
-            } else {
-                scanner.nextLine();  // Consumir a linha pendente
             }
-            
 
-        while (true) {
-            System.out.println("Bem vindo ao");
+        } catch (IOException e) {
+            System.err.println("Erro ao ler a entrada: " + e.getMessage());
+        }
+
+        boolean continuar = true;
+        int menu = 0;  // Declarando a variável menu fora do loop
+
+        while (continuar) {
+            System.out.println("Bem-vindo ao");
             Thread.sleep(1000);
             System.out.println(
                 "\nSSSSS    OOO  U   U  N   N  DDDD     III  N   N      CCCC   III  TTTTT  Y     Y" +
-                "\nS       O   O U   U  NN  N  D   D     I   NN  N     C        I     T     Y   Y"  +
-                "\n SSS    O   O U   U  N N N  D   D     I   N N N     C        I     T      YYY"   +
-                "\n    S   O   O U   U  N  NN  D   D     I   N  NN     C        I     T       Y"    +
+                "\nS       O   O U   U  NN  N  D   D     I   NN  N     C        I     T     Y   Y" +
+                "\n SSS    O   O U   U  N N N  D   D     I   N N N     C        I     T      YYY" +
+                "\n    S   O   O U   U  N  NN  D   D     I   N  NN     C        I     T       Y" +
                 "\nSSSS     OOO   UUU   N   N  DDDD     III  N   N      CCCC   III    T       Y"
-                );
+            );
             Thread.sleep(500);
 
             // Criando o menu
@@ -144,69 +155,44 @@ public class Main {
                 "\n3 - Bandas que vão tocar nos próximos 7 dias" +
                 "\n4 - Bandas que vão tocar nos próximos 30 dias" +
                 "\n5 - Todas as bandas" +
-                "\n6 - Sair" 
-                );
-            int menu = scanner.nextInt();
-            Thread.sleep(2000);
+                "\n6 - Sair"
+            );
 
+            menu = lernum.lerNumeroValido(reader);
+            if (menu < 1 || menu > 6) {
+                System.out.println("Por favor, insira uma opção válida (1 a 6).");
+                continue;  // Retorna ao loop caso a opção seja inválida
+            }
+
+            Thread.sleep(2000);
 
             Metodos Exibir = new Metodos();
             switch (menu) {
-                // Sobre nós
-                
                 case 1:
-                    System.out.println("Somos uma turma da Faculdade Positivo, cursando Análise e Desenvolvimento de Sistemas, atualmente no segundo semestre. Este projeto é parte da disciplina de Desenvolvimento de Software,\n onde aplicamos conceitos de programação orientada a objetos, desenvolvimento ágil e gestão de sistemas.\r\n" + //
-                                                "\r\n" + //
-                                                "Nosso objetivo com este projeto é criar uma aplicação que auxilie na consulta de shows de diferentes gêneros musicais, apresentando informações sobre as bandas e seus respectivos eventos,\n proporcionando uma experiência interativa e dinâmica para o usuário.\r\n" + //
-                                                "\r\n" + //
-                                                "Ao longo do desenvolvimento, tivemos a oportunidade de trabalhar em equipe, aprender sobre as melhores práticas de codificação e também de enfrentar desafios técnicos,\n como integração de dados e estruturação de informações. Cada membro da equipe contribuiu com suas habilidades e aprendizado para o sucesso do projeto, que reflete nosso crescimento acadêmico e profissional.\r\n" + //
-                                                "\r\n" + //
-                                                "Agradecemos pela sua visita e esperamos que aproveite nossa aplicação!");
+                    System.out.println("Somos uma turma da Faculdade Positivo...");
                     break;
-
-                // Pesquisa de músicas com gêneros
                 case 2:
                     Exibir.pesquisaGenero(alternative, rock, eletronic, pop, reggae, punk);
                     break;
-
-                // Imprimir os shows que terão nos próximos 7 dias
                 case 3:
-
                     Exibir.exibirShowsNosProximos7Dias(alternative, rock, eletronic, pop, reggae, punk);
                     break;
-
-                // Imprimir todas as bandas que irão tocar esse mês
                 case 4:
                     Exibir.exibirShowsNoMes(alternative, rock, eletronic, pop, reggae, punk);
                     break;
-
-                // Imprimir todos os shows registrados
                 case 5:
-                    
                     Exibir.exibirTodas(alternative, rock, eletronic, pop, reggae, punk);
                     break;
-                
-                // Fechar o aplicativo
                 case 6:
+                    continuar = false;
                     break;
-
-                // Em caso de comando invalido
                 default:
                     System.out.println("Comando Inválido");
                     break;
+    }
+}
 
-        }
-        
-        // Finalizando o programa
-        if (menu == 6){
-            scanner.close();
-            System.out.println("Finalizando programa...");
-            break;
-        }
+System.out.println("Finalizando programa...");
 
     }
 }
-}
-
-
-

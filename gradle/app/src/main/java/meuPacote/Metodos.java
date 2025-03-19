@@ -1,9 +1,39 @@
 package meuPacote;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Metodos {
+
+
+    // Melhorando a leitura da entrada e a verificação de números válidos
+    public static int lerNumeroValido(BufferedReader reader) {
+        while (true) {
+            try {
+                System.out.println("Por favor, insira um número válido (ou digite 'sair' para encerrar):");
+                String input = reader.readLine();
+    
+                if (input != null && !input.trim().isEmpty()) {
+                    if (input.trim().equalsIgnoreCase("sair")) {
+                        System.out.println("Encerrando a entrada...");
+                        break; // Sai do loop
+                    }
+                    return Integer.parseInt(input); // Retorna o número válido
+                } else {
+                    System.out.println("Entrada vazia. Por favor, insira um número válido.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Entrada inválida. Por favor, insira um número válido.");
+            } catch (IOException e) {
+                System.err.println("Erro ao ler a entrada: " + e.getMessage());
+            }
+        }
+        return -1; // Valor padrão caso o loop seja interrompido (se "sair" for digitado)
+    }
+    
+
 
     public static int getDiaAtual() {
         // Pega a data atual

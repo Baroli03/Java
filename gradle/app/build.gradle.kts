@@ -28,9 +28,9 @@ java {
 }
 
 application {
-    // Corrigido o erro: use `mainClass.set(...)` corretamente
-    mainClass.set("meuPacote.GravadorJson")
+    mainClass.set("meuPacote.Main")
 }
+
 
 tasks.named<Test>("test") {
     useJUnitPlatform()
