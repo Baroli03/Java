@@ -9,6 +9,11 @@ import java.util.List;
 
 public class GravadorJson {
 
+    public static void main(String[] args) {
+        GravadorJson gravador = new GravadorJson();
+        gravador.getUsuario("Maria", "maria@email.com", "senha123");
+    }
+
     public void getUsuario(String nome, String email, String senha) {
 
         Usuario usuario = new Usuario(nome, email, senha);
@@ -24,7 +29,7 @@ public class GravadorJson {
         if (arquivo.exists() && arquivo.length() > 0) {
             try {
                 // Lê os usuários existentes no arquivo
-                usuarios = objectMapper.readValue(arquivo, new TypeReference<List<Usuario>>(){});
+                usuarios = objectMapper.readValue(arquivo, new TypeReference<List<Usuario>>() {});
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -35,7 +40,6 @@ public class GravadorJson {
 
         // Salva novamente o arquivo JSON com a lista de usuários atualizada
         try {
-            // Convertendo a lista de usuários para JSON e salvando em um arquivo
             objectMapper.writeValue(arquivo, usuarios);
             System.out.println("Usuário adicionado com sucesso!");
         } catch (IOException e) {
