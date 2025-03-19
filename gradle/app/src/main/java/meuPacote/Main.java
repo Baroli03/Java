@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
-        Scanner scanner = new Scanner(System.in);
+        
         // Criando gêneros
 
         Genero alternative = new Genero("Alternative");
@@ -95,7 +95,8 @@ public class Main {
         punk.adicionarBanda(banda28);
         punk.adicionarBanda(banda29);
         punk.adicionarBanda(banda30);
-
+        
+        Scanner scanner = new Scanner(System.in);
 
 
         System.out.println("Deseja entrar em um Usuário? [1 Para Sim], [2 Para não]");
