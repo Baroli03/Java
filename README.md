@@ -1,6 +1,6 @@
 # 🎸 Bands in City - Console App
 
-Um programa de console desenvolvido em Java que exibe as bandas que irão tocar em Curitiba. O aplicativo permite visualizar as bandas por diferentes critérios e utiliza JSON para armazenar os dados dos usuários.
+Um programa de console desenvolvido em Java que exibe as bandas que irão tocar em Curitiba. O aplicativo permite visualizar as bandas por diferentes critérios.
 
 ## 🚀 Funcionalidades
 
