@@ -121,14 +121,17 @@ public class Main {
                 System.out.println("Digite sua senha: ");
                 String senha = reader.readLine();  // Lê a linha inteira (senha do usuário)
 
-                // Chama a classe GravadorJson (supondo que ela esteja implementada)
-                GravadorJson gravador = new GravadorJson();
-                gravador.getUsuario(nome, email, senha);
+
+                System.out.println("Seu nome é " + nome);
+                System.out.println("Seu email é " + email);
+                System.out.println("Sua senha é " + senha);
             }
 
         } catch (IOException e) {
             System.err.println("Erro ao ler a entrada: " + e.getMessage());
         }
+
+       
 
         boolean continuar = true;
         int menu = 0;  // Declarando a variável menu fora do loop

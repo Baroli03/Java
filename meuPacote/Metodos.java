@@ -9,7 +9,7 @@ public class Metodos {
 
 
     // Melhorando a leitura da entrada e a verificação de números válidos
-    public static int lerNumeroValido(BufferedReader reader) {
+    public int lerNumeroValido(BufferedReader reader) {
         while (true) {
             try {
                 System.out.println("Por favor, insira um número válido (ou digite 'sair' para encerrar):");
