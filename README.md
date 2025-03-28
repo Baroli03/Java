@@ -23,7 +23,6 @@ projeto-bandas-curitiba
 │   ├── Metodos.java      # Lógica do programa
 │   ├── Usuario.java      # Classe que representa um usuário
 ├── README.md             # Documentação do projeto
-├── usuario.json          # Dados dos usuários
 ```
 
 ## ⚡ Como Executar o Projeto
