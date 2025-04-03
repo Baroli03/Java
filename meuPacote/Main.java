@@ -1,12 +1,9 @@
-
 package meuPacote;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.IOException;
+import javax.swing.JOptionPane;
 
 public class Main {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws NumberFormatException, InterruptedException{
 
         // Criando gêneros
         Genero alternative = new Genero("Alternative");
@@ -96,40 +93,40 @@ public class Main {
         punk.adicionarBanda(banda29);
         punk.adicionarBanda(banda30);
 
-        Metodos lernum = new Metodos();
+        // Metodos lernum = new Metodos();
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); // Declaração aqui
+        // BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); // Declaração aqui
 
-        try {
-            // Solicita ao usuário se deseja entrar
-            System.out.println("Deseja entrar em um Usuário? [1 Para Sim], [2 Para Não]");
-            int user = lernum.lerNumeroValido(reader);
+        // try {
+        //     // Solicita ao usuário se deseja entrar
+        //     System.out.println("Deseja entrar em um Usuário? [1 Para Sim], [2 Para Não]");
+        //     int user = lernum.lerNumeroValido(reader);
 
-            if (user == 1) {
-                // Cadastro de usuário
-                System.out.println("Bem-vindo à área de cadastro...");
+        //     if (user == 1) {
+        //         // Cadastro de usuário
+        //         System.out.println("Bem-vindo à área de cadastro...");
 
-                // Solicita o nome
-                System.out.println("Digite seu nome: ");
-                String nome = reader.readLine();  // Lê a linha inteira (nome do usuário)
+        //         // Solicita o nome
+        //         System.out.println("Digite seu nome: ");
+        //         String nome = reader.readLine();  // Lê a linha inteira (nome do usuário)
             
-                // Solicita o e-mail
-                System.out.println("Digite seu e-mail: ");
-                String email = reader.readLine();  // Lê a linha inteira (e-mail do usuário)
+        //         // Solicita o e-mail
+        //         System.out.println("Digite seu e-mail: ");
+        //         String email = reader.readLine();  // Lê a linha inteira (e-mail do usuário)
             
-                // Solicita a senha
-                System.out.println("Digite sua senha: ");
-                String senha = reader.readLine();  // Lê a linha inteira (senha do usuário)
+        //         // Solicita a senha
+        //         System.out.println("Digite sua senha: ");
+        //         String senha = reader.readLine();  // Lê a linha inteira (senha do usuário)
 
 
-                System.out.println("Seu nome é " + nome);
-                System.out.println("Seu email é " + email);
-                System.out.println("Sua senha é " + senha);
-            }
+        //         System.out.println("Seu nome é " + nome);
+        //         System.out.println("Seu email é " + email);
+        //         System.out.println("Sua senha é " + senha);
+        //     }
 
-        } catch (IOException e) {
-            System.err.println("Erro ao ler a entrada: " + e.getMessage());
-        }
+        // } catch (IOException e) {
+        //     System.err.println("Erro ao ler a entrada: " + e.getMessage());
+        // }
 
        
 
@@ -137,82 +134,64 @@ public class Main {
         int menu = 0;  // Declarando a variável menu fora do loop
 
         while (continuar) {
-            System.out.println("Bem-vindo ao");
-            Thread.sleep(1000);
-            System.out.println(
-                "\nSSSSS    OOO  U   U  N   N  DDDD     III  N   N      CCCC   III  TTTTT  Y     Y" +
-                "\nS       O   O U   U  NN  N  D   D     I   NN  N     C        I     T     Y   Y" +
-                "\n SSS    O   O U   U  N N N  D   D     I   N N N     C        I     T      YYY" +
-                "\n    S   O   O U   U  N  NN  D   D     I   N  NN     C        I     T       Y" +
-                "\nSSSS     OOO   UUU   N   N  DDDD     III  N   N      CCCC   III    T       Y"
-            );
-            Thread.sleep(500);
+            try {
+                String input = JOptionPane.showInputDialog(
+                    "\nBem-vindo ao: \n" +
+                    "\nSSSSS    OOO     U        U     N         N  DDDD             III  N         N           CCCC   III  TTTTT  Y     Y" +
+                    "\nS               O   O     U       U      NN      N  D        D           I   NN       N          C             I       T        Y   Y" +
+                    "\n SSS         O   O     U       U      N  N   N  D          D          I   N  N     N          C             I       T        YYY" +
+                    "\n           S    O   O     U       U      N     NN  D        D            I   N       NN          C             I       T           Y" +
+                    "\nSSSS       OOO      UUUU     N         N  DDDD             III  N          N           CCCC   III      T           Y" +
+                    "\n-----------------------------------------------------------------------------------------------------------------------" +
+                    "\n1 - Sobre nós" +   
+                    "\n2 - Pesquisa por Gêneros de banda" +
+                    "\n3 - Bandas que vão tocar nos próximos 7 dias" +
+                    "\n4 - Bandas que vão tocar nos próximos 30 dias" +
+                    "\n5 - Todas as bandas" +
+                    "\n6 - Sair"
+                );
 
-            // Criando o menu
-            System.out.println(
-                "Menu:" +
-                "\n1 - Sobre nós" +
-                "\n2 - Pesquisa por Genêros de banda" +
-                "\n3 - Bandas que vão tocar nos próximos 7 dias" +
-                "\n4 - Bandas que vão tocar nos próximos 30 dias" +
-                "\n5 - Todas as bandas" +
-                "\n6 - Sair"
-            );
+                if (input != null) {
+                    menu = Integer.parseInt(input); // Agora a entrada está corretamente atribuída
 
-            menu = lernum.lerNumeroValido(reader);
-            if (menu < 1 || menu > 6) {
-                System.out.println("Por favor, insira uma opção válida (1 a 6).");
-                continue;  // Retorna ao loop caso a opção seja inválida
+                    Metodos Exibir = new Metodos();
+
+                    // Executa a ação conforme a opção do menu
+                    switch (menu) {
+                        case 1:
+                            JOptionPane.showMessageDialog(null, "Somos uma turma da Faculdade Positivo...");
+                            break;
+                        case 2:
+                            Exibir.pesquisaGenero(alternative, rock, eletronic, pop, reggae, punk);
+                            break;
+                        case 3:
+                            Exibir.exibirShowsNosProximos7Dias(alternative, rock, eletronic, pop, reggae, punk);
+                            break;
+                        case 4:
+                            Exibir.exibirShowsNoMes(alternative, rock, eletronic, pop, reggae, punk);
+                            break;
+                        case 5:
+                            Exibir.exibirTodas(alternative, rock, eletronic, pop, reggae, punk);
+                            break;
+                        case 6:
+                            continuar = false;  // Sair do loop
+                            break;
+                        default:
+                            JOptionPane.showMessageDialog(null, "Opção inválida");
+                            break;
+                    }
+                } else {
+                    // Caso o usuário cancele a entrada ou pressione "cancelar"
+                    JOptionPane.showMessageDialog(null, "Você não selecionou nenhuma opção. Fechando...");
+                    continuar = false;  // Sai do loop
+                }
+
+            } catch (NumberFormatException e) {
+                // Captura a exceção caso o usuário digite algo que não seja um número
+                JOptionPane.showMessageDialog(null, "Por favor, insira um número válido.");
             }
+        }
 
-            Thread.sleep(2000);
-
-            Metodos Exibir = new Metodos();
-            switch (menu) {
-                case 1:
-                System.out.println("Somos uma turma da Faculdade Positivo, cursando Análise e Desenvolvimento de Sistemas, atualmente no segundo semestre. Este projeto é parte da disciplina de Desenvolvimento de Software,\n onde aplicamos conceitos de programação orientada a objetos, desenvolvimento ágil e gestão de sistemas.\r\n" + //
-
- 
-
-                "\r\n" + //
-
-
-                "Nosso objetivo com este projeto é criar uma aplicação que auxilie na consulta de shows de diferentes gêneros musicais, apresentando informações sobre as bandas e seus respectivos eventos,\n proporcionando uma experiência interativa e dinâmica para o usuário.\r\n" + //
-
-
-                "\r\n" + //
-
-
-                "Ao longo do desenvolvimento, tivemos a oportunidade de trabalhar em equipe, aprender sobre as melhores práticas de codificação e também de enfrentar desafios técnicos,\n como integração de dados e estruturação de informações. Cada membro da equipe contribuiu com suas habilidades e aprendizado para o sucesso do projeto, que reflete nosso crescimento acadêmico e profissional.\r\n" + //
-
-
-                "\r\n" + //
-
-
-                "Agradecemos pela sua visita e esperamos que aproveite nossa aplicação!");
-                    break;
-                case 2:
-                    Exibir.pesquisaGenero(alternative, rock, eletronic, pop, reggae, punk);
-                    break;
-                case 3:
-                    Exibir.exibirShowsNosProximos7Dias(alternative, rock, eletronic, pop, reggae, punk);
-                    break;
-                case 4:
-                    Exibir.exibirShowsNoMes(alternative, rock, eletronic, pop, reggae, punk);
-                    break;
-                case 5:
-                    Exibir.exibirTodas(alternative, rock, eletronic, pop, reggae, punk);
-                    break;
-                case 6:
-                    continuar = false;
-                    break;
-                default:
-                    System.out.println("Comando Inválido");
-                    break;
-    }
-}
-
-System.out.println("Finalizando programa...");
-
+        System.out.println("Finalizando programa...");
     }
 }

@@ -1,9 +1,6 @@
 package meuPacote;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.time.LocalDate;
-import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class Metodos {
 
