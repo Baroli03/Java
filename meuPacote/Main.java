@@ -101,36 +101,54 @@ public class Main {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); // Declaração aqui
 
         try {
-            // Solicita ao usuário se deseja entrar
             System.out.println("Deseja entrar em um Usuário? [1 Para Sim], [2 Para Não]");
             int user = lernum.lerNumeroValido(reader);
-
+        
             if (user == 1) {
-                // Cadastro de usuário
                 System.out.println("Bem-vindo à área de cadastro...");
-
-                // Solicita o nome
-                System.out.println("Digite seu nome: ");
-                String nome = reader.readLine();  // Lê a linha inteira (nome do usuário)
-            
-                // Solicita o e-mail
+        
+                // Escolha do tipo de identificação
+                System.out.println("Você deseja se identificar com: [1 - Nome] ou [2 - ID]?");
+                int escolha = lernum.lerNumeroValido(reader);
+        
+                String email, senha;
+                Usuario usuario = null;
+        
+                // Entrada comum para email e senha
                 System.out.println("Digite seu e-mail: ");
-                String email = reader.readLine();  // Lê a linha inteira (e-mail do usuário)
-            
-                // Solicita a senha
+                email = reader.readLine();
+        
                 System.out.println("Digite sua senha: ");
-                String senha = reader.readLine();  // Lê a linha inteira (senha do usuário)
-
-
-                System.out.println("Seu nome é " + nome);
-                System.out.println("Seu email é " + email);
-                System.out.println("Sua senha é " + senha);
+                senha = reader.readLine();
+        
+                if (escolha == 1) {
+                    System.out.println("Digite seu nome: ");
+                    String nome = reader.readLine();
+                    usuario = new Usuario(nome, email, senha);  // construtor com nome
+                } else if (escolha == 2) {
+                    System.out.println("Digite seu ID: ");
+                    String id = reader.readLine();
+                    usuario = new Usuario(id, email, senha, true);  // construtor com ID
+                } else {
+                    System.out.println("Opção inválida.");
+                }
+        
+                if (usuario != null) {
+                    System.out.println("Cadastro concluído!");
+                    if (usuario.getNome() != null) {
+                        System.out.println("Seu nome é: " + usuario.getNome());
+                    } else {
+                        System.out.println("Seu ID é: " + usuario.getId());
+                    }
+                    System.out.println("Seu email é: " + usuario.getEmail());
+                    System.out.println("Sua senha é: " + usuario.getSenha());
+                }
             }
-
+        
         } catch (IOException e) {
             System.err.println("Erro ao ler a entrada: " + e.getMessage());
         }
-
+        
        
 
         boolean continuar = true;

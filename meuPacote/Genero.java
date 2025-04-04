@@ -3,6 +3,7 @@ package meuPacote;
 import java.util.List;
 import java.util.ArrayList;  
 
+
 class Genero {
     private String nome;
     private List<Banda> bandas;

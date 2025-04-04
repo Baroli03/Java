@@ -1,23 +1,45 @@
 package meuPacote;
 
 public class Usuario {
-    
+
+    private String id;
     private String nome;
     private String email;
     private String senha;
 
-    // Construtor padrão (sem parâmetros) necessário para deserialização
+    // Construtor padrão
     public Usuario() {
     }
 
-    // Construtor com parâmetros
+    // Construtor com nome, email e senha
     public Usuario(String nome, String email, String senha) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
+        this.id = gerarIdAutomaticamente(); // pode ser um UUID ou algo do tipo
+    }
+
+    // Construtor com ID, email e senha
+    public Usuario(String id, String email, String senha, boolean usarId) {
+        this.id = id;
+        this.email = email;
+        this.senha = senha;
+    }
+
+    // Método para gerar um ID aleatório, se quiser automatizar
+    private String gerarIdAutomaticamente() {
+        return java.util.UUID.randomUUID().toString();
     }
 
     // Getters e Setters
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getNome() {
         return nome;
     }
