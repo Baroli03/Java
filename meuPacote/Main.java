@@ -1,10 +1,10 @@
-
 package meuPacote;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
 
 public class Main {
+    // ATENÇÃO THROWS INTERRUPTEDEXCEPTION DEVIDO AO THREAD.SLEEP() POIS ESSA CHAMADA PAUSA O PROGRAMA POR ALGUNS MINUTOS
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -100,6 +100,8 @@ public class Main {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); // Declaração aqui
 
+
+        // TRY CATCH USADO PARA PEGAR A EXCESSÃO IOException É USADA POIS O .readLine() CAUSA ESSA EXCESSÃO
         try {
             System.out.println("Deseja entrar em um Usuário? [1 Para Sim], [2 Para Não]");
             int user = lernum.lerNumeroValido(reader);

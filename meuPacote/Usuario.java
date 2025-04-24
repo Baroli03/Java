@@ -12,6 +12,7 @@ public class Usuario {
     }
 
     // Construtor com nome, email e senha
+    // POLIMORFISMO ESTÁ AQUI POIS É USADO O POLIMORFISMO DE SOBRESCRITA (OVERRIDING) ###
     public Usuario(String nome, String email, String senha) {
         this.nome = nome;
         this.email = email;
@@ -20,6 +21,7 @@ public class Usuario {
     }
 
     // Construtor com ID, email e senha
+    // POLIMORFISMO ESTÁ AQUI POIS É USADO O POLIMORFISMO DE SOBRESCRITA (OVERRIDING) ###
     public Usuario(String id, String email, String senha, boolean usarId) {
         this.id = id;
         this.email = email;

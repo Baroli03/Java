@@ -1,31 +1,30 @@
-package meuPacote;  
+package meuPacote;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.ArrayList;  
 
-
-class Genero {
+public class Genero {
     private String nome;
     private List<Banda> bandas;
 
-    // Pegando o nome do Gênero e criando uma Lista para salvar as bandas
     public Genero(String nome) {
         this.nome = nome;
-        this.bandas = new ArrayList<>(); 
+        // LISTA DE BANDAS 
+        this.bandas = new ArrayList<>();
     }
 
-    // Adiciona a banda na lista
     public void adicionarBanda(Banda banda) {
-        bandas.add(banda); 
+        if (!bandas.contains(banda)) {
+            // ADICIONANDO LISTA DE BANDAS
+            bandas.add(banda);
+        }
     }
 
-    // Um metodo que Pega o nome do gênero
     public String getNome() {
-        return nome;  
+        return nome;
     }
 
-    // Um metodo que pega a lista das bandas
     public List<Banda> getBandas() {
-        return bandas;  
+        return bandas;
     }
 }
