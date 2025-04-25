@@ -31,7 +31,7 @@ public class Metodos {
                 System.err.println("Erro ao ler a entrada: " + e.getMessage());
             }
         }
-        return -1; // Valor padrão caso o loop seja interrompido (se "sair" for digitado)
+        return -1;
     }
     
 
