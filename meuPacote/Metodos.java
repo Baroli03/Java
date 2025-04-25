@@ -13,7 +13,7 @@ public class Metodos {
     public int lerNumeroValido(BufferedReader reader) {
         while (true) {
             try {
-                System.out.println("Por favor, insira um número válido (ou digite 'sair' para encerrar):");
+                System.out.println("");
                 String input = reader.readLine();
     
                 if (input != null && !input.trim().isEmpty()) {
