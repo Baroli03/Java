@@ -103,7 +103,7 @@ public class Main {
 
         // TRY CATCH USADO PARA PEGAR A EXCESSÃO IOException É USADA POIS O .readLine() CAUSA ESSA EXCESSÃO
         try {
-            System.out.println("Deseja entrar em um Usuário? [1 Para Sim], [2 Para Não]");
+            System.out.println("\nDeseja entrar em um Usuário? [1 Para Sim], [2 Para Não]");
             int user = lernum.lerNumeroValido(reader);
         
             if (user == 1) {

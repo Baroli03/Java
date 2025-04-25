@@ -9,6 +9,7 @@ public class Metodos {
 
 
     // Melhorando a leitura da entrada e a verificação de números válidos
+
     public int lerNumeroValido(BufferedReader reader) {
         while (true) {
             try {
